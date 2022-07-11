@@ -1,0 +1,17 @@
+.MuiButton-root {
+  &.login {
+    &__submit {
+      width: 180px;
+      font-size: 18px;
+      line-height: 22px;
+      border-radius: 16px;
+      text-transform: capitalize;
+      color: #FFFFFF;
+      background-color: $color--accent-light;
+
+      &:hover {
+        background-color: $color--accent-light-hover;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "src/styles/variables";
+
+.sidebar {
+  &__logo {
+    margin: 50px 0 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 210px;
+      height: 80px;
+      object-fit: cover;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+    letter-spacing: 0.05em;
+    padding: 14px 30px;
+    color: $color--dark;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+      background-color: $color--accent-light-dim;
+    }
+  }
+
+  &__item {
+    display: block;
+  }
+}

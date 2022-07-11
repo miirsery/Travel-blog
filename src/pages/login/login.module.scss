@@ -1,0 +1,12 @@
+@import "src/styles/variables";
+.login {
+  &__form {
+    width: 340px;
+  }
+
+  &__forget {
+    line-height: 20px;
+    color: $color--gray;
+    padding: 18px;
+  }
+}
