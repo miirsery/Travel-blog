@@ -112,8 +112,8 @@ const Sidebar = () => {
                 <ul>
                     {
                         sidebarItems.map((item: any) => (
-                            <li className={styles.sidebar__item}>
-                                <Link to={item.url} key={item.value} className={styles.sidebar__link}>
+                            <li className={styles.sidebar__item} key={item.value}>
+                                <Link to={item.url} className={styles.sidebar__link}>
                                     <img src={item.component} alt={item.name} className="mr-20"/>
                                     {item.name}
                                 </Link>

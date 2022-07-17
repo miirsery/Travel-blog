@@ -8,8 +8,10 @@ import {useEffect, useState} from "react";
 import Posts from "../../pages/posts";
 import Admins from "../../admins";
 import General from "../../pages/general";
-import Sidebar from "../Sidebar";
+import Sidebar from "../Common/Sidebar";
 import Box from '@mui/material/Box';
+import Header from "../Common/Header";
+import CreatePost from "../CreatePost";
 
 const customTheme = createTheme({
     palette: {
@@ -20,12 +22,18 @@ const customTheme = createTheme({
     }
 })
 
-function App() {
+const App = () => {
     const [isAuth, setIsAuth] = useState(true);
+    const [isCreatePostDialogVisible, setIsCreatePostDialogVisible] = useState(false);
+
     const navigate = useNavigate()
 
     const handleLogin = (isAuth: boolean): void => {
         setIsAuth(isAuth)
+    }
+
+    const handleTogglePostDialogVisible = (isVisible: boolean) => {
+        setIsCreatePostDialogVisible(isVisible)
     }
 
     useEffect(() => {
@@ -35,23 +43,30 @@ function App() {
     }, [isAuth])
 
     return (
-        <Box sx={{ display: 'flex'}}>
-            {isAuth && <Sidebar />}
-            <Routes>
-                {
-                    isAuth
-                        ? (
-                            <>
-                                <Route path='/admin/general' element={<General />}/>
-                                <Route path='/admin/posts' element={<Posts />}/>
-                                <Route path='/admin/admins' element={<Admins />}/>
-                                <Route path='/admin' element={<Navigate to='/admin/general' />} />
-                            </>
-                    )
-                        : <Route path='/admin' element={<Login setIsAuth={handleLogin} />} />
-                }
-            </Routes>
-        </Box>
+        <>
+            <Box sx={{ display: 'flex'}}>
+                {isAuth && <Sidebar/> }
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', padding: '0 20px' }}>
+                    <Header setIsCreatePostDialogVisible={handleTogglePostDialogVisible} />
+                    <Routes>
+                        {
+                            isAuth
+                                ? (
+                                    <>
+                                        <Route path='/admin/general' element={<General />}/>
+                                        <Route path='/admin/posts' element={<Posts />}/>
+                                        <Route path='/admin/admins' element={<Admins />}/>
+                                        <Route path='/admin' element={<Navigate to='/admin/general' />} />
+                                    </>
+                                )
+                                : <Route path='/admin' element={<Login setIsAuth={handleLogin} />} />
+                        }
+                    </Routes>
+                </Box>
+            </Box>
+           <CreatePost isVisible={isCreatePostDialogVisible} setIsCreatePostDialogVisible={handleTogglePostDialogVisible} />
+        </>
   )
 }
 
