@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Box} from "@mui/material";
+import PostTable from "../../components/Posts/PostTable";
 
 const Posts = () => {
     return (
-        <div>
-            Posts
-            <Link to='/admin/admins'>Admins</Link>
-        </div>
+        <Box>
+            <PostTable />
+        </Box>
     );
 };
 
