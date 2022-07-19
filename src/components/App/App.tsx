@@ -6,7 +6,7 @@ import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import Login from "../../pages/login";
 import {useEffect, useState} from "react";
 import Posts from "../../pages/posts";
-import Admins from "../../admins";
+import Admins from "../../pages/admins";
 import General from "../../pages/general";
 import Sidebar from "../Common/Sidebar";
 import Box from '@mui/material/Box';
@@ -48,14 +48,14 @@ const App = () => {
                 {isAuth && <Sidebar/> }
 
                 <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', padding: '0 20px' }}>
-                    <Header setIsCreatePostDialogVisible={handleTogglePostDialogVisible} />
+                    <Header />
                     <Routes>
                         {
                             isAuth
                                 ? (
                                     <>
                                         <Route path='/admin/general' element={<General />}/>
-                                        <Route path='/admin/posts' element={<Posts />}/>
+                                        <Route path='/admin/posts' element={<Posts setIsCreatePostDialogVisible={handleTogglePostDialogVisible} />}/>
                                         <Route path='/admin/admins' element={<Admins />}/>
                                         <Route path='/admin' element={<Navigate to='/admin/general' />} />
                                     </>
