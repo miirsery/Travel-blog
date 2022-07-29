@@ -1,5 +1,5 @@
-import React from 'react';
-import {Box, Typography} from "@mui/material";
+import React, {useState} from 'react';
+import {Box, Paper, TextField, Typography} from "@mui/material";
 import styles from './index.module.scss'
 import {
     Chart as ChartJS,
@@ -12,6 +12,9 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 ChartJS.register(
     CategoryScale,
@@ -38,6 +41,7 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
+
 export const data = {
     labels,
     datasets: [
@@ -54,11 +58,16 @@ export const data = {
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
         },
     ],
-};
+}
+
 const Settings = () => {
+    const [value, setValue] = useState<Date | null>(null);
+
     return (
         <div className="settings">
-            <Box>
+            <Box sx={{
+                maxWidth: '946px'
+            }}>
                 <Typography
                     className={styles['settings__title']}
                     gutterBottom
@@ -68,13 +77,36 @@ const Settings = () => {
                     Статистика
                 </Typography>
                 <div className={styles['settings__all-views']}>
-                    <Line options={options} data={data} />;
+                    <Line className={styles['settings__all-views-chart']} options={options} data={data} />
                 </div>
                 <Box sx={{
                     display: 'flex'
                 }}>
                     <Box className="settings__active-users">
-                        acitveUsers
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                        }}>
+                            <Paper sx={{ padding: '30px 30px 32px' }}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center' }}
+                                >
+                                    <div className={styles['settings__chart-title']}>Активные пользователи</div>
+                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                        <DatePicker
+                                            value={value}
+                                            onChange={(newValue) => {
+                                                setValue(newValue);
+                                            }}
+                                            renderInput={(params) => <TextField {...params} />}
+                                        />
+                                    </LocalizationProvider>
+                                </Box>
+                            </Paper>
+                        </Box>
                     </Box>
                     <Box className="settings__rating-cities">
                         ratingCities
