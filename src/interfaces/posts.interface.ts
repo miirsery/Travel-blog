@@ -1,3 +1,3 @@
 export interface IPosts {
-    setIsCreatePostDialogVisible: (isCreatePostDialogVisible: boolean) => void
+  setIsCreatePostDialogVisible: (isCreatePostDialogVisible: boolean) => void;
 }
