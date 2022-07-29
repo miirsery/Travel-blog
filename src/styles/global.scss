@@ -1,4 +1,7 @@
 @import 'variables';
+body {
+  color: $color--dark;
+}
 .mr-20 {
   margin-right: 20px !important;
 }

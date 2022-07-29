@@ -23,8 +23,9 @@ const customTheme = createTheme({
 })
 
 const App = () => {
-    const [isAuth, setIsAuth] = useState(true);
-    const [isCreatePostDialogVisible, setIsCreatePostDialogVisible] = useState(false);
+    const [isAuth, setIsAuth] = useState(true)
+    const [isCreatePostDialogVisible, setIsCreatePostDialogVisible] = useState(false)
+
 
     const navigate = useNavigate()
 
