@@ -9,8 +9,13 @@ const users: UserType[] = usersData
 
 const Admins = () => {
     return (
-        <div className={styles.admins}>
-            <Typography className="admins__title" gutterBottom variant="h1" component="h1">
+        <div className="admins">
+            <Typography
+                className="admins__title"
+                gutterBottom
+                variant="h1"
+                component="h1"
+            >
                 Администраторы
             </Typography>
              {/*TODO: Прижать к правому краю, чтобы элементы приходили слева, а не справа.*/}

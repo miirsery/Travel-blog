@@ -98,12 +98,13 @@ const Sidebar = () => {
     return (
         <Stack
             sx={{
-                width: 330,
+                width: '330px',
             }}
         >
             <Paper
                 sx={{
-                    height: '100vh',
+                    minHeight: '100vh',
+                    height: '100%',
                 }}
             >
                 <div className={styles.sidebar__logo}>
