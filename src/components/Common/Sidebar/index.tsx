@@ -14,6 +14,7 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
+const userId = 1
 const sidebarItems = [
     {
         name: 'Главная',
@@ -37,7 +38,7 @@ const sidebarItems = [
         name: 'Статистика',
         value: 'Statistics',
         component: settingsIcon,
-        url: '/admin/statistics'
+        url: `/admin/statistics/${userId}`
     },
     {
         name: 'Настройки',

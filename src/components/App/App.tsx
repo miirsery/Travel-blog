@@ -2,7 +2,7 @@ import './App.css'
 // material ui
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import Login from "../../pages/login";
 import {useEffect, useState} from "react";
 import Posts from "../../pages/posts";
@@ -12,6 +12,8 @@ import Sidebar from "../Common/Sidebar";
 import Box from '@mui/material/Box';
 import Header from "../Common/Header";
 import CreatePost from "../CreatePost";
+import Statistics from "../../pages/statistics";
+import Settings from "../../pages/settings";
 
 const customTheme = createTheme({
     palette: {
@@ -28,6 +30,11 @@ const App = () => {
 
 
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const isSearchVisible =
+        !location.pathname.includes('/admin/statistics/')
+        && !location.pathname.includes('/admin/settings')
 
     const handleLogin = (isAuth: boolean): void => {
         setIsAuth(isAuth)
@@ -56,7 +63,8 @@ const App = () => {
                         padding: '0 20px',
                         backgroundColor: "#e5e5e5"
                 }}>
-                    <Header />
+                    { isSearchVisible && <Header /> }
+
                     <Routes>
                         {
                             isAuth
@@ -65,6 +73,8 @@ const App = () => {
                                         <Route path='/admin/general' element={<General />}/>
                                         <Route path='/admin/posts' element={<Posts setIsCreatePostDialogVisible={handleTogglePostDialogVisible} />}/>
                                         <Route path='/admin/admins' element={<Admins />}/>
+                                        <Route path='/admin/statistics/:id' element={<Statistics />}/>
+                                        <Route path='/admin/settings' element={<Settings />}/>
                                         <Route path='/admin' element={<Navigate to='/admin/general' />} />
                                     </>
                                 )
