@@ -48,7 +48,14 @@ const App = () => {
             <Box sx={{ display: 'flex'}}>
                 {isAuth && <Sidebar/> }
 
-                <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', padding: '0 20px' }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '100%',
+                        padding: '0 20px',
+                        backgroundColor: "#e5e5e5"
+                }}>
                     <Header />
                     <Routes>
                         {

@@ -23,6 +23,7 @@ const AdminCard = ({ user }: { user: UserType }) => {
                     sx={{
                         height: '150px',
                         width: '150px',
+                        marginBottom: '14px'
                     }}
                 />
                 <CardContent>
